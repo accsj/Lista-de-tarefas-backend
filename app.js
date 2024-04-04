@@ -7,6 +7,7 @@ const addtask = require("./routes/TaskAdd/taskadd");
 const taskdel = require("./routes/TaskDel/taskdel");
 const recovery = require("./routes/Recovery/recovery");
 const passrecovery = require("./routes/PassRecovery/passrecovery");
+const cookieParser = require('cookie-parser');
 const cors = require("cors");
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors({ credentials: true, origin: "https://tasklistaccsj.vercel.app" }))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(cookieParser());
 
 
 // Pages Auth Routes

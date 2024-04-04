@@ -3,8 +3,7 @@ const router = express.Router();
 const pool = require('../../modules/db');
 const jwt = require('jsonwebtoken');
 
-const cookieParser = require('cookie-parser');
-router.use(cookieParser());
+
 
 router.post('/addtask', async (req, res) => {
     const token = req.cookies.token; 

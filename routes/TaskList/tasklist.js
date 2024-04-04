@@ -1,8 +1,6 @@
 const pool = require("../../modules/db");
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const cookieParser = require('cookie-parser');
-router.use(cookieParser());
 const router = express();
 
 async function getTasksByUserId(userId) {
