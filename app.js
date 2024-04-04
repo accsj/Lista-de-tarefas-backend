@@ -12,7 +12,7 @@ const app = express();
 
 
 // Configs
-app.use(cors());
+app.use(cors({ credentials: true, origin: "https://tasklistaccsj.vercel.app" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
