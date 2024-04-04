@@ -1,6 +1,8 @@
 const pool = require("../../modules/db");
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const cookieParser = require('cookie-parser');
+router.use(cookieParser());
 const router = express();
 
 async function getTasksByUserId(userId) {
@@ -19,7 +21,7 @@ async function getTasksByUserId(userId) {
 }
 
 router.get('/tasklist', async(req, res) => {
-    const token = req.cookies.token; 
+    const token = req.body.token; 
 
     if (!token) {
         return res.status(401).json({ error: 'Token não fornecido.' });
