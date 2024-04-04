@@ -4,7 +4,7 @@ const pool = require('../../modules/db');
 const jwt = require('jsonwebtoken');
 
 router.post('/addtask', async (req, res) => {
-    const token = req.body.token; 
+    const token = req.cookies.token; 
 
     if (!token) {
         return res.status(401).json({ error: 'Token não fornecido.' });
