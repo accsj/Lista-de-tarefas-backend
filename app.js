@@ -7,6 +7,7 @@ const addtask = require("./routes/TaskAdd/taskadd");
 const taskdel = require("./routes/TaskDel/taskdel");
 const recovery = require("./routes/Recovery/recovery");
 const passrecovery = require("./routes/PassRecovery/passrecovery");
+const logout = require("./routes/Logout/Logout");
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
 const app = express();
@@ -31,6 +32,7 @@ app.use("/", addtask)
 app.use("/", taskdel)
 app.use("/", recovery)
 app.use("/", passrecovery)
+app.use("/", logout)
 
 
 
