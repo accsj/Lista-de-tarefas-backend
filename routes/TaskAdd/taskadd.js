@@ -3,10 +3,14 @@ const router = express.Router();
 const pool = require('../../modules/db');
 const jwt = require('jsonwebtoken');
 
-
+function extractToken(authorizationHeader) {
+    if (!authorizationHeader) return null;
+    const token = authorizationHeader.split(' ')[1];
+    return token;
+}
 
 router.post('/addtask', async (req, res) => {
-    const token = req.cookies.token; 
+    const token = extractToken(req.headers.authorization);
 
     if (!token) {
         return res.status(401).json({ error: 'Token não fornecido.' });

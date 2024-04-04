@@ -18,15 +18,21 @@ async function getTasksByUserId(userId) {
     }
 }
 
+function extractToken(authorizationHeader) {
+    if (!authorizationHeader) return null;
+    const token = authorizationHeader.split(' ')[1];
+    return token;
+}
+
 router.get('/tasklist', async(req, res) => {
-    const token = req.cookies.token; 
+    const token = extractToken(req.headers.authorization); 
 
     if (!token) {
         return res.status(401).json({ error: 'Token não fornecido.' });
     }
 
     try {
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY); 
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
         const userId = decodedToken.userId;
 
         const tasks = await getTasksByUserId(userId);
