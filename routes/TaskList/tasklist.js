@@ -19,7 +19,7 @@ async function getTasksByUserId(userId) {
 }
 
 router.get('/tasklist', async(req, res) => {
-    const token = req.cookies.token; 
+    const token = req.body.token; 
 
     if (!token) {
         return res.status(401).json({ error: 'Token não fornecido.' });
