@@ -36,8 +36,11 @@ router.post('/recovery', async (req, res)=> {
             transporter.sendMail(mailOptions, (error)=> {
                 if (error) {
                     client.release();
+                    console.log(process.env.user)
+                    console.log(process.env.pass)
                     console.log(error)
                     console.log(mailOptions)
+
                     res.status(500).json({success:false, message: 'Erro ao enviar o email'});
                 } else {
                     client.release();
